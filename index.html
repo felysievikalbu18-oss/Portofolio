@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Felysievi Kalbu</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:600px;
+      height:600px;
+      background:radial-gradient(circle,#7c3aed55,transparent 70%);
+      top:-200px;
+      right:-200px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:radial-gradient(circle,#06b6d455,transparent 70%);
+      bottom:-200px;
+      left:-200px;
+      z-index:-1;
+    }
+
+    header{
+      width:100%;
+      padding:25px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      background:rgba(15,23,42,0.7);
+      backdrop-filter:blur(10px);
+      z-index:999;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .logo span{
+      color:#8b5cf6;
+    }
+
+    nav a{
+      color:#cbd5e1;
+      text-decoration:none;
+      margin-left:30px;
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    nav a:hover{
+      color:#8b5cf6;
+    }
+
+    section{
+      padding:120px 8%;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:300px;
+    }
+
+    .hero-text h3{
+      color:#cbd5e1;
+      font-weight:400;
+      margin-bottom:10px;
+    }
+
+    .hero-text h1{
+      font-size:64px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text h1 span{
+      color:#8b5cf6;
+    }
+
+    .hero-text p{
+      color:#94a3b8;
+      line-height:1.8;
+      margin-bottom:30px;
+      max-width:600px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 28px;
+      background:linear-gradient(135deg,#8b5cf6,#06b6d4);
+      color:white;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:600;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(139,92,246,0.3);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      min-width:300px;
+    }
+
+    .profile-card{
+      width:350px;
+      height:420px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:30px;
+      backdrop-filter:blur(15px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .profile-card .circle{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#8b5cf6,#06b6d4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:52px;
+      font-weight:700;
+      margin-bottom:25px;
+    }
+
+    .profile-card h2{
+      margin-bottom:10px;
+    }
+
+    .profile-card p{
+      color:#94a3b8;
+    }
+
+    .section-title{
+      font-size:40px;
+      margin-bottom:50px;
+      text-align:center;
+    }
+
+    .section-title span{
+      color:#8b5cf6;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:24px;
+      padding:30px;
+      transition:0.3s;
+      backdrop-filter:blur(10px);
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:#8b5cf6;
+    }
+
+    .card h3{
+      margin-bottom:20px;
+      color:#8b5cf6;
+    }
+
+    .card p,
+    .card li{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:20px;
+    }
+
+    .timeline-item{
+      padding-left:30px;
+      margin-bottom:30px;
+      border-left:2px solid #8b5cf6;
+      position:relative;
+    }
+
+    .timeline-item::before{
+      content:'';
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:#8b5cf6;
+      position:absolute;
+      left:-8px;
+      top:5px;
+    }
+
+    .timeline-item h4{
+      margin-bottom:8px;
+      color:white;
+    }
+
+    .timeline-item span{
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .skill-box{
+      background:rgba(255,255,255,0.05);
+      padding:25px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .skill-box h4{
+      margin-bottom:15px;
+      color:#8b5cf6;
+    }
+
+    .footer{
+      text-align:center;
+      padding:40px 20px;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @media(max-width:768px){
+
+      .hero-text h1{
+        font-size:42px;
+      }
+
+      nav{
+        display:none;
+      }
+
+      .profile-card{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Felysievi<span>.</span></div>
+
+    <nav>
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#achievement">Prestasi</a>
+      <a href="#skills">Keahlian</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+
+    <div class="hero-text">
+      <h3>Halo, saya</h3>
+
+      <h1>Felysievi <span>Kalbu</span></h1>
+
+      <p>
+        Mahasiswa kreatif dan inovatif yang memiliki minat besar
+        di bidang desain digital, pengembangan website, dan
+        komunikasi kreatif. Aktif mengikuti berbagai kegiatan
+        organisasi dan proyek digital untuk meningkatkan kemampuan
+        profesional serta memperluas pengalaman di dunia teknologi.
+      </p>
+
+      <a href="#" class="btn">Lihat Portfolio</a>
+    </div>
+
+    <div class="hero-image">
+      <div class="profile-card">
+        <div class="circle">F</div>
+
+        <h2>Felysievi Kalbu</h2>
+        <p>Mahasiswa • UI/UX Enthusiast</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="about">
+
+    <h2 class="section-title">Tentang <span>Saya</span></h2>
+
+    <div class="about">
+
+      <div class="card">
+        <h3>Bio</h3>
+
+        <p>
+          Saya adalah mahasiswa yang memiliki semangat tinggi
+          dalam mempelajari teknologi modern dan pengembangan
+          digital. Saya dikenal sebagai pribadi disiplin,
+          komunikatif, serta mampu bekerja secara individu maupun
+          tim. Fokus utama saya adalah membangun pengalaman digital
+          yang elegan, modern, dan bermanfaat.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Informasi Pribadi</h3>
+
+        <ul>
+          <li>Nama : Felysievi Kalbu</li>
+          <li>Jenis Kelamin : Perempuan</li>
+          <li>Status : Mahasiswa</li>
+          <li>Domisili : Jakarta, Indonesia</li>
+          <li>Email : felysievi.kalbu@email.com</li>
+          <li>Hobi : Desain, Fotografi, dan Teknologi</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="experience">
+
+    <h2 class="section-title">Pengalaman <span>Kerja</span></h2>
+
+    <div class="card">
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h4>UI/UX Designer Intern</h4>
+          <span>2024 - PT Digital Kreasi Nusantara</span>
+
+          <p>
+            Membantu tim desain dalam membuat tampilan aplikasi
+            mobile modern dan melakukan riset pengalaman pengguna.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Social Media Creative</h4>
+          <span>2023 - Creative Spark Agency</span>
+
+          <p>
+            Mengembangkan konsep visual media sosial serta
+            meningkatkan engagement hingga 40% dalam 6 bulan.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Freelance Web Designer</h4>
+          <span>2022 - Sekarang</span>
+
+          <p>
+            Mendesain website modern untuk UMKM dan personal brand
+            dengan fokus pada tampilan elegan dan responsif.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="achievement">
+
+    <h2 class="section-title">Prestasi & <span>Karir</span></h2>
+
+    <div class="about">
+
+      <div class="card">
+        <h3>Pencapaian</h3>
+
+        <ul>
+          <li>Juara 1 Lomba Desain UI Tingkat Nasional 2024</li>
+          <li>Top 10 Finalis Startup Innovation Competition</li>
+          <li>Sertifikasi Web Design Professional</li>
+          <li>Best Creative Project Award 2023</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Target Karir</h3>
+
+        <p>
+          Berkarir sebagai UI/UX Designer profesional dan membangun
+          startup kreatif berbasis teknologi yang dapat membantu
+          pengembangan bisnis digital di Indonesia.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="skills">
+
+    <h2 class="section-title">Keahlian <span>Saya</span></h2>
+
+    <div class="skills">
+
+      <div class="skill-box">
+        <h4>UI/UX Design</h4>
+        <p>Figma, Adobe XD, Wireframing, Prototyping</p>
+      </div>
+
+      <div class="skill-box">
+        <h4>Web Development</h4>
+        <p>HTML, CSS, JavaScript, Responsive Design</p>
+      </div>
+
+      <div class="skill-box">
+        <h4>Creative Skills</h4>
+        <p>Content Design, Branding, Photography</p>
+      </div>
+
+      <div class="skill-box">
+        <h4>Soft Skills</h4>
+        <p>Leadership, Public Speaking, Teamwork</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Felysievi Kalbu • Modern Portfolio Website</p>
+  </footer>
+
+</body>
+</html>
