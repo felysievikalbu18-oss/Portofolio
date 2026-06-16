@@ -146,7 +146,7 @@
 
     .profile-card{
       width:350px;
-      height:420px;
+      height:450px;
       background:rgba(255,255,255,0.05);
       border:1px solid rgba(255,255,255,0.1);
       border-radius:30px;
@@ -156,11 +156,14 @@
       justify-content:center;
       align-items:center;
       box-shadow:0 20px 40px rgba(0,0,0,0.4);
+      padding:20px;
+      text-align:center;
     }
 
+    /* Peningkatan pada lingkaran foto profil */
     .profile-card .circle{
-      width:140px;
-      height:140px;
+      width:160px;
+      height:160px;
       border-radius:50%;
       background:linear-gradient(135deg,#8b5cf6,#06b6d4);
       display:flex;
@@ -169,14 +172,30 @@
       font-size:52px;
       font-weight:700;
       margin-bottom:25px;
+      overflow:hidden;
+      border:4px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    }
+
+    .profile-card .circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .profile-card:hover .circle img {
+      transform: scale(1.1);
     }
 
     .profile-card h2{
       margin-bottom:10px;
+      font-size: 24px;
     }
 
     .profile-card p{
       color:#94a3b8;
+      font-size: 15px;
     }
 
     .section-title{
@@ -218,6 +237,75 @@
     .card li{
       color:#cbd5e1;
       line-height:1.8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .gallery-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-10px);
+      border-color: #06b6d4;
+      box-shadow: 0 15px 30px rgba(6, 182, 212, 0.2);
+    }
+
+    .gallery-img-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover .gallery-img-container img {
+      transform: scale(1.1);
+    }
+
+    .gallery-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      color: white;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gallery-info {
+      padding: 20px;
+    }
+
+    .gallery-info h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .gallery-info p {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .timeline{
@@ -279,7 +367,6 @@
     }
 
     @media(max-width:768px){
-
       .hero-text h1{
         font-size:42px;
       }
@@ -301,6 +388,7 @@
 
     <nav>
       <a href="#about">Tentang</a>
+      <a href="#projects">Karya</a>
       <a href="#experience">Pengalaman</a>
       <a href="#achievement">Prestasi</a>
       <a href="#skills">Keahlian</a>
@@ -322,12 +410,17 @@
         profesional serta memperluas pengalaman di dunia teknologi.
       </p>
 
-      <a href="#" class="btn">Lihat Portfolio</a>
+      <a href="#projects" class="btn">Lihat Portfolio</a>
     </div>
 
     <div class="hero-image">
       <div class="profile-card">
-        <div class="circle">F</div>
+        <!-- Menggunakan foto potret estetik dari Unsplash sebagai foto Felysievi Kalbu -->
+        <div class="circle">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80" 
+               alt="Felysievi Kalbu" 
+               onerror="this.onerror=null; this.src='https://placehold.co/400x400/8b5cf6/ffffff?text=Felysievi';">
+        </div>
 
         <h2>Felysievi Kalbu</h2>
         <p>Mahasiswa • UI/UX Enthusiast</p>
@@ -351,7 +444,7 @@
           digital. Saya dikenal sebagai pribadi disiplin,
           komunikatif, serta mampu bekerja secara individu maupun
           tim. Fokus utama saya adalah membangun pengalaman digital
-          yang elegan, modern, dan bermanfaat.
+          yang elegan, modern, dan bermanfaat bagi seluruh kalangan pengguna.
         </p>
       </div>
 
@@ -359,13 +452,65 @@
         <h3>Informasi Pribadi</h3>
 
         <ul>
-          <li>Nama : Felysievi Kalbu</li>
-          <li>Jenis Kelamin : Perempuan</li>
-          <li>Status : Mahasiswa</li>
-          <li>Domisili : Jakarta, Indonesia</li>
-          <li>Email : felysievi.kalbu@email.com</li>
-          <li>Hobi : Desain, Fotografi, dan Teknologi</li>
+          <li><strong>Nama :</strong> Felysievi Kalbu</li>
+          <li><strong>Jenis Kelamin :</strong> Perempuan</li>
+          <li><strong>Status :</strong> Mahasiswa</li>
+          <li><strong>Domisili :</strong> Jakarta, Indonesia</li>
+          <li><strong>Email :</strong> felysievi.kalbu@email.com</li>
+          <li><strong>Hobi :</strong> Desain, Fotografi, dan Teknologi</li>
         </ul>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="projects">
+
+    <h2 class="section-title">Galeri <span>Karya</span></h2>
+
+    <div class="gallery-grid">
+
+      <!-- Proyek 1: UI/UX Design -->
+      <div class="gallery-card">
+        <div class="gallery-img-container">
+          <span class="gallery-tag">UI/UX</span>
+          <img src="https://images.unsplash.com/photo-1581291518655-9523c932eecf?auto=format&fit=crop&w=600&h=400&q=80" 
+               alt="UI/UX Design Mockup"
+               onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/cbd5e1?text=UI/UX+Design';">
+        </div>
+        <div class="gallery-info">
+          <h4>EcoStep Mobile App</h4>
+          <p>Desain aplikasi mobile pelacak jejak karbon harian dengan antarmuka bersih, ramah pengguna, dan interaktif.</p>
+        </div>
+      </div>
+
+      <!-- Proyek 2: Web Design -->
+      <div class="gallery-card">
+        <div class="gallery-img-container">
+          <span class="gallery-tag">Web Design</span>
+          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&h=400&q=80" 
+               alt="Web Design Showcase"
+               onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/cbd5e1?text=Web+Design';">
+        </div>
+        <div class="gallery-info">
+          <h4>SaaS Landing Page</h4>
+          <p>Pengembangan landing page responsif dengan animasi modern untuk platform manajemen tugas berbasis web.</p>
+        </div>
+      </div>
+
+      <!-- Proyek 3: Photography / Branding -->
+      <div class="gallery-card">
+        <div class="gallery-img-container">
+          <span class="gallery-tag">Creative</span>
+          <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&h=400&q=80" 
+               alt="Branding Design"
+               onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/cbd5e1?text=Creative+Branding';">
+        </div>
+        <div class="gallery-info">
+          <h4>Branding & Identity</h4>
+          <p>Konsep identitas visual minimalis dan desain aset media sosial interaktif untuk UMKM kopi lokal.</p>
+        </div>
       </div>
 
     </div>
